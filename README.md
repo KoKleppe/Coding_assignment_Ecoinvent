@@ -17,4 +17,4 @@ Put the three files in a directory and create a subdirectory called data within 
 
 ## Authors
 
-*Ko Kleppe
+Ko Kleppe
