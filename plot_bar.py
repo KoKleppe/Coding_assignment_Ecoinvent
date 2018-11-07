@@ -48,8 +48,6 @@ def create_text_string(df,string_list):
             raise ValueError("Amount unaccounted for %d" % amount)
         
         text_string = split_string("* " + amount + " " + df["Unit Name"].iloc[count] + " " + df["Name"].iloc[count],40)
-        #
-        #text_string = "- " + amount + " " + df["Unit Name"].iloc[count] + " " + df["Name"].iloc[count]
         string_list.append(text_string)
             
     return "\n".join(string_list)
