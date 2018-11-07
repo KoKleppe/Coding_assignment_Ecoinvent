@@ -5,12 +5,6 @@ Created on Mon Oct 29 07:48:25 2018
 
 @author: ko
 
-To do:
-    
-    - Quantity up to four digits
-    - Betere Layout
-    - Anticiperen future test cases
-    
 """
 
 
@@ -26,6 +20,7 @@ def convert_to_df(root, eco, exchange_lst, name_tag):
     # Create DataFrame to store and sort exchanges.
     col_names =  ["Name","Unit Name",'Exchange Type', 'Input', 'Amount', "Production Volume Amount"]
     df  = pd.DataFrame(columns = col_names)
+
     for exchange in exchange_lst:
         ## Reading data into a pandas Dataframe.
         for elem in root.findall("%s/Eco:flowData/Eco:%s" % (name_tag,exchange), eco):
@@ -114,7 +109,6 @@ def retrieve_variables(df,eco,root):
     ## Retrieve Elemental input.
     df_elementary_input = df[(df["Input"] == True) & (df["Exchange Type"] == "elementaryExchange")].sort_values(by=['Amount'], ascending=False)
     input_elem = subset_df(df_elementary_input)
-    
     
     return activity_name, geo_short_name, ref_product, by_product, input_tech, input_elem, output_elem
 

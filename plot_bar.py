@@ -126,8 +126,6 @@ def plot_diagram(plt,patches, activity_name, geo_short_name, ref_product, by_pro
 
     return plt
 
-
-
 # Dictionary to deal with the pre-fix.
 eco = {"Eco":"http://www.EcoInvent.org/EcoSpold02"}
 
