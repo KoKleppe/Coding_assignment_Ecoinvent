@@ -20,10 +20,11 @@ def convert_to_df(root, eco, exchange_lst, name_tag):
     # Create DataFrame to store and sort exchanges.
     col_names =  ["Name","Unit Name",'Exchange Type', 'Input', 'Amount', "Production Volume Amount"]
     df  = pd.DataFrame(columns = col_names)
-
+    
     for exchange in exchange_lst:
         ## Reading data into a pandas Dataframe.
         for elem in root.findall("%s/Eco:flowData/Eco:%s" % (name_tag,exchange), eco):
+            
             # Name.
             elem_name = elem.find("./Eco:name",eco)
             name = elem_name.text
@@ -55,6 +56,7 @@ def convert_to_df(root, eco, exchange_lst, name_tag):
             # Appending row.
             df_2 = pd.DataFrame([[name,unit_name, exchange, input_group, amount, pv_amount]], columns= col_names)
             df = df.append(df_2,ignore_index=True)      
+            
     return df
 
 def subset_df(df,constraint = 5):
@@ -100,6 +102,7 @@ def retrieve_variables(df,eco,root):
     ## Retrieve inputs technosphere.
     df_intermediary_input = df[(df["Input"] == True) & (df["Exchange Type"] == "intermediateExchange")].sort_values(by=['Amount'], ascending=False)
     input_tech = subset_df(df_intermediary_input)
+    print("INPUT TECH", input_tech["Name"])
     
     ### Elementary Exchange ###
     ## Retrieve elemental output.

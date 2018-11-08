@@ -20,9 +20,10 @@ def split_string(string,size_constraint):
     """
     
     if (len(string) > size_constraint) & (string.find(",") != -1) :
-        string = string.rsplit(",",2)[0].capitalize()  + "," + "\n" + string.rsplit(",",2)[1] 
+        string = string[:string.find(",")].capitalize() + "," + "\n" + string[string.find(",")+1:]
     elif (len(string) > size_constraint) & (string.find(",") == -1):
         string = string[:round(len(string)/2)] + "-" + "\n" + string[round(len(string)/2):]
+        
     return string
 
 
@@ -82,7 +83,7 @@ def plot_diagram(plt,patches, activity_name, geo_short_name, ref_product, by_pro
     # Activity name & geo_short name.
     
     activity_geo_text = split_string(activity_name,25) + "\n" + "                           " + geo_short_name 
-    ax.text(40.5,25.5, activity_geo_text, fontsize=3)
+    ax.text(40.5,25.5, activity_geo_text, fontsize=2.5)
     
     ## Intermediary exchange.
     # Reference product.
@@ -130,6 +131,7 @@ eco = {"Eco":"http://www.EcoInvent.org/EcoSpold02"}
 # List of exchanges.
 exchange_lst = ["intermediateExchange","elementaryExchange"]
 
+# Specify directory
 directory = os.path.abspath(os.path.join("data"))
 
 ## Looping through directories. 
@@ -139,7 +141,7 @@ for file_name in os.listdir(directory):
     Reading in files
     
     """
-
+    
     tree = ET.parse(os.path.abspath(os.path.join("data",file_name)))
     root = tree.getroot()
     
@@ -159,6 +161,7 @@ for file_name in os.listdir(directory):
     
     plot.savefig("%s" % (file_name),bbox_inches="tight", format='eps', dpi=1000)
     plot.show()
+    
     
 
 
