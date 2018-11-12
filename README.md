@@ -9,6 +9,10 @@ Put the three files in a directory and create a subdirectory called data within 
   python3 plot_bar.py
 ```
 
+## Example output
+
+
+
 ### Prerequisites
 
 * ElementTree
