@@ -11,7 +11,7 @@ Put the three files in a directory and create a subdirectory called data within 
 
 ## Example output
 
-
+![example_output_diagram](https://user-images.githubusercontent.com/27730191/48338138-257f8680-e665-11e8-8722-665bf8634035.png)
 
 ### Prerequisites
 
